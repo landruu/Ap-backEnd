@@ -2,7 +2,6 @@ package com.porfolioandres.first.Controller;
 
 import com.porfolioandres.first.Model.Educacion;
 import com.porfolioandres.first.Service.SCEducacion;
-import java.net.URL;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -56,7 +54,7 @@ public class CEducacion {
 
     // El bendito Edit
     @PutMapping("/editar/{id}")
-    public void editEdu(@PathVariable("id") Long id, @PathVariable Educacion newEdu){
+    public void editEdu(@PathVariable("id") Long id, @RequestBody Educacion newEdu){
     
     Educacion eduEdit = eduServ.buscarEdu(id);
     eduEdit.setInstitucion(newEdu.getInstitucion());

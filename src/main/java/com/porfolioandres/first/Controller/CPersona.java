@@ -4,6 +4,8 @@ import com.porfolioandres.first.Model.Persona;
 import com.porfolioandres.first.Service.SCPersona;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,9 +46,15 @@ public class CPersona {
         perControl.borrarPers(id);
     }
     
+        // detail
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Persona> detail(@PathVariable Long id){
+        return new ResponseEntity<>(perControl.buscarPers(id), HttpStatus.OK);
+    }
+    
     //Editar Personas
     @PutMapping("/editar/{id}")
-    public void editPers(@PathVariable("id") Long id, @PathVariable Persona newPers){
+    public void editPers(@PathVariable("id") Long id, @RequestBody Persona newPers){
     
     Persona persEdit = perControl.buscarPers(id);
     

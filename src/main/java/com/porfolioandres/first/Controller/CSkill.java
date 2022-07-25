@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,7 +54,7 @@ public class CSkill {
 
     // El bendito Edit
     @PutMapping("/editar/{id}")
-    public void editEdu(@PathVariable("id") Long id, @PathVariable SKill newSkill){
+    public void editEdu(@PathVariable("id") Long id, @RequestBody SKill newSkill){
     
     SKill skillEdit = skillServ.buscarSkill(id);
     skillEdit.setNombre(newSkill.getNombre());
